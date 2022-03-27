@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Лабораторна робота №4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script>
+        let background;
+ 
+        function createInfoWindow(title, body) {
+            background = document.createElement("div");
+            background.className = "dialogOverlay";
+            let s = `
+                <div class="dialogOverlay">
+                    <div class="dialog">
+                        <div class="dialogHead">${title}</div>
+                        <div class="dialogBody">${body}</div>
+                    </div>
+                </div>`;
+            background.innerHTML = s;
+            document.body.appendChild(background);
+        }
+ 
+        let student = {
+            "Група": "КН-205",
+            "Прізвище": "Теглівець",
+            "Ім'я": "Олеся"
+        };
+        let properties = ["Прізвище", "Ім'я", "Група"]; // Information about student
+        let i = 0;
+        let intervalId = setInterval(handler, 2000, student, properties);
+ 
+        function handler(obj, array) {
+            if (background) background.remove(); // Close previous dialog window, if it was
+            createInfoWindow(array[i], obj[array[i]]); // Create new information window
+ 
+            if (++i === array.length) clearInterval(intervalId); // After showing third window to stop timer
+        }
+    </script>
+</body>
+</html>

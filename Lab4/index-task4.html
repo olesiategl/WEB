@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Лабораторна робота №4</title>
+    </head>
+    <body>
+
+        <textarea placeholder="Enter your text" id="input" name="textarea"></textarea>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
+        <script>
+
+            var x_timer;    
+            $("#input").keyup(function (e){
+                clearTimeout(x_timer);
+                var n = $(this).val().length;
+                x_timer = setTimeout(function(){
+                    if(n >= 1 && n <= 3){
+                        input.style.backgroundColor = "red";
+                    }
+                    else if(n >= 4 && n <= 8){
+                        input.style.backgroundColor = "yellow";
+                    }
+                    else if(n >= 9){
+                        input.style.backgroundColor = "green";
+                    }
+                    
+                }, 1000);
+            });
+
+        </script>
+    </body>
+</html>
